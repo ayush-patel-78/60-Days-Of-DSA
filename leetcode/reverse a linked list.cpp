@@ -15,9 +15,9 @@ public:
         ListNode* previousNode;
         ListNode* nextNode;
         while(head){
-            previousNode=head;
             nextNode=head->next;
             head->next=previousNode;
+            previousNode=head;
             head=nextNode;
             
         }
