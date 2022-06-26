@@ -12,16 +12,17 @@ public:
         }
         while(pq.top()>1){
             ll rem = sum - pq.top();
-            if(rem>0){
+            if(rem>=0){
                 if(rem==0) return false;
                 int quotient = pq.top()/rem;
                 int value = pq.top() % rem;
-                sum = sum - (quotient*pq.top()) ;
+                sum = sum - pq.top()+value ;
                 if(rem==1) return true;
-                if(rem > pq.top() || rem==0 || value==0) return false;
+                if(rem > pq.top() || rem==0 || value==0 || value<0) return false;
                 pq.pop();
                 pq.push(value);
-            } 
+            }
+            
         }
         return true;
     }
