@@ -11,6 +11,9 @@ using namespace std;
  
 class Solution {
 public:
+
+// My Approach time complexity O(n*n)
+
     ListNode* rotateRight(ListNode* head, int k) {
         ListNode* start = head;
         ListNode* prev = head;
@@ -34,4 +37,33 @@ public:
         }
         return start;
     }
+
+// better Approach Time complexity O(n)
+
+    ListNode* rotateRight(ListNode* head, int k) {
+        int len = 0;
+        if(head==NULL) return NULL;
+        ListNode* start = head;
+        while(head){
+            if(head->next==NULL){
+               head->next = start;
+               len++;
+               break;
+            }
+                
+            head = head->next;
+            len++;
+        }
+        head = start;
+        k = k%len;
+        int n = len-k;
+        while(--n){
+           head = head->next;  
+        }
+        ListNode* ans = head->next;
+        head->next = NULL;
+        return ans;
+        
+    }
+
 };
